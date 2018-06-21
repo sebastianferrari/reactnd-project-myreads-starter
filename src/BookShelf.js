@@ -7,12 +7,11 @@ function BookShelf(props) {
       <h2 className="bookshelf-title">{props.category}</h2>
       <div className="bookshelf-books">
         <ol className="books-grid">
-          <li>
-            <Book />
-          </li>
-          <li>
-            <Book />
-          </li>
+          {props.books.map(book => (
+            <li key={book.title}>
+              <Book book={book} />
+            </li>
+          ))}
         </ol>
       </div>
     </div>

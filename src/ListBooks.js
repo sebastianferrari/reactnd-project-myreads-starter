@@ -10,9 +10,22 @@ function ListBooks(props) {
       </div>
       <div className="list-books-content">
         <div>
-          <BookShelf category='Currently Reading' />
-          <BookShelf category='Want to Read' />
-          <BookShelf category='Read' />
+
+          <BookShelf 
+            category='Currently Reading'
+            books={props.books}
+          />
+
+          <BookShelf 
+            category='Want to Read'
+            books={props.books}
+          />
+          
+          <BookShelf 
+            category='Read'
+            books={props.books}
+          />
+
         </div>
       </div>
       <div className="open-search">
