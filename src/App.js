@@ -7,7 +7,8 @@ import ListBooks from './ListBooks';
 
 class BooksApp extends Component {
   state = {
-    books: []
+    books: [],
+    searchingBooks: []
   }
 
   componentDidMount() {
@@ -21,22 +22,47 @@ class BooksApp extends Component {
   }
 
   addBook = book => {
-    
+
   }
 
   changeCategory = newCategory => {
 
   }
 
-  searchBook = searchTerm => {
-    // BooksAPI.search()
+  searchBooks = searchTerm => {
+    //console.log('Search Term', searchTerm);
+    if (searchTerm.length === 0) {
+      this.setState({
+        searchingBooks: []
+      })
+    } else if (searchTerm.length < 3) {
+      // Do nothing because the shorter word in search terms available has 3 characters.
+      //console.log('searchTerm.length', searchTerm.length);
+    } else {
+      BooksAPI.search(searchTerm)
+        .then((books) => {
+          if (!books.error) {
+            this.setState(() => ({
+              searchingBooks: books
+            }));
+            console.log("Searched Books", books);
+          } else {
+            this.setState({
+              searchingBooks: []
+            })
+          }
+        })
+    }
   }
 
   render() {
     return (
       <div className="app">
         <Route path='/search' render={() => (
-          <Search />
+          <Search
+            searchBooks={this.searchBooks}
+            resultBooksList={this.state.searchingBooks}
+          />
         )} />
         <Route exact path='/' render={() => (
           <ListBooks
