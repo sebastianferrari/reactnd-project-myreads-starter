@@ -12,6 +12,10 @@ class BooksApp extends Component {
   }
 
   componentDidMount() {
+    this.getOurBooks();
+  }
+
+  getOurBooks = () => {
     BooksAPI.getAll()
       .then((books) => {
         this.setState(() => ({
@@ -21,12 +25,14 @@ class BooksApp extends Component {
       })
   }
 
-  addBook = book => {
-
-  }
-
-  changeCategory = newCategory => {
-
+  changeCategory = (book, shelf) => {
+    //console.log('Book', book);
+    //console.log('Shelf', shelf);
+    BooksAPI.update(book, shelf)
+      .then((res) => {
+        //console.log('res', res)
+        this.getOurBooks();
+      })
   }
 
   searchBooks = searchTerm => {
@@ -45,7 +51,7 @@ class BooksApp extends Component {
 
             // Before set state we need to map adding a shelf property.
             let ourBooks = books.map(book => (
-              Object.assign({ shelf: 'none' }, {...book})
+              Object.assign({ shelf: 'none' }, { ...book })
             ))
 
             // And here we need to map our states with the search result categories.
@@ -55,12 +61,12 @@ class BooksApp extends Component {
                 &&
                 element.contentVersion === ourBooks[i].contentVersion
               ));
-              
+
               if (inOurShelf.length > 0) {
                 ourBooks[i].shelf = inOurShelf[0].shelf
               }
             }
-            
+
             // console.log('Our books', ourBooks);
             this.setState(() => ({
               searchingBooks: ourBooks
@@ -87,6 +93,7 @@ class BooksApp extends Component {
         <Route exact path='/' render={() => (
           <ListBooks
             books={this.state.books}
+            updateCategory={this.changeCategory}
           />
         )} />
       </div>

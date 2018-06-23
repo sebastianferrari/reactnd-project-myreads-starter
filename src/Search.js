@@ -12,24 +12,11 @@ class Search extends Component {
     this.setState({
       searchTerm: value
     })
-    //if (value.length > 2) {
-      this.props.searchBooks(value);
-    //}
+    this.props.searchBooks(value);
   }
 
   render() {
-    // const searchTerms = ['Android', 'Art', 'Artificial Intelligence', 'Astronomy',
-    //   'Austen', 'Baseball', 'Basketball', 'Bhagat', 'Biography', 'Brief', 'Business',
-    //   'Camus', 'Cervantes', 'Christie', 'Classics', 'Comics', 'Cook', 'Cricket',
-    //   'Cycling', 'Desai', 'Design', 'Development', 'Digital Marketing', 'Drama',
-    //   'Drawing', 'Dumas', 'Education', 'Everything', 'Fantasy', 'Film', 'Finance',
-    //   'First', 'Fitness', 'Football', 'Future', 'Games', 'Gandhi', 'Homer', 'Horror',
-    //   'Hugo', 'Ibsen', 'Journey', 'Kafka', 'King', 'Lahiri', 'Larsson', 'Learn',
-    //   'Literary Fiction', 'Make', 'Manage', 'Marquez', 'Money', 'Mystery', 'Negotiate',
-    //   'Painting', 'Philosophy', 'Photography', 'Poetry', 'Production', 'Programming',
-    //   'React', 'Redux', 'River', 'Robotics', 'Rowling', 'Satire', 'Science Fiction',
-    //   'Shakespeare', 'Singh', 'Swimming', 'Tale', 'Thrun', 'Time', 'Tolstoy', 'Travel',
-    //   'Ultimate', 'Virtual Reality', 'Web Development', 'iOS'];
+    // const searchTerms = ['Android', 'Art', 'Artificial Intelligence', 'Astronomy', 'Austen', 'Baseball', 'Basketball', 'Bhagat', 'Biography', 'Brief', 'Business', 'Camus', 'Cervantes', 'Christie', 'Classics', 'Comics', 'Cook', 'Cricket', 'Cycling', 'Desai', 'Design', 'Development', 'Digital Marketing', 'Drama', 'Drawing', 'Dumas', 'Education', 'Everything', 'Fantasy', 'Film', 'Finance', 'First', 'Fitness', 'Football', 'Future', 'Games', 'Gandhi', 'Homer', 'Horror', 'Hugo', 'Ibsen', 'Journey', 'Kafka', 'King', 'Lahiri', 'Larsson', 'Learn', 'Literary Fiction', 'Make', 'Manage', 'Marquez', 'Money', 'Mystery', 'Negotiate', 'Painting', 'Philosophy', 'Photography', 'Poetry', 'Production', 'Programming', 'React', 'Redux', 'River', 'Robotics', 'Rowling', 'Satire', 'Science Fiction', 'Shakespeare', 'Singh', 'Swimming', 'Tale', 'Thrun', 'Time', 'Tolstoy', 'Travel', 'Ultimate', 'Virtual Reality', 'Web Development', 'iOS'];
 
     return (
       <div className="search-books">
@@ -58,10 +45,10 @@ class Search extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {this.props.resultBooksList.map( book => (
+            {this.props.resultBooksList.map(book => (
               <li key={book.industryIdentifiers[0].identifier
-                        + '_'
-                        + book.contentVersion}>
+                + '_'
+                + book.contentVersion}>
                 <Book book={book} />
               </li>
             ))}
