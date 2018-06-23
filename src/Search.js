@@ -39,9 +39,7 @@ class Search extends Component {
         <div className="search-books-results">
           <ol className="books-grid">
             {this.props.resultBooksList.map(book => (
-              <li key={book.industryIdentifiers[0].identifier
-                + '_'
-                + book.contentVersion}>
+              <li key={book.id}>
                 <Book book={book} onCategoryChange={this.props.onCategoryChange} />
               </li>
             ))}
