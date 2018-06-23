@@ -57,9 +57,7 @@ class BooksApp extends Component {
             // And here we need to map our states with the search result categories.
             for (let i in ourBooks) {
               var inOurShelf = this.state.books.filter(element => (
-                element.industryIdentifiers[0].identifier === ourBooks[i].industryIdentifiers[0].identifier
-                &&
-                element.contentVersion === ourBooks[i].contentVersion
+                element.id === ourBooks[i].id
               ));
 
               if (inOurShelf.length > 0) {
