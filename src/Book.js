@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class Book extends Component {
   state = {
+    book: this.props.book,
     categorySelected: this.props.book.shelf
   }
 
@@ -9,9 +10,14 @@ class Book extends Component {
     this.setState({
       categorySelected: e.target.value
     })
+    //this.props.updateCategory(this.state.book, e.target.value);
   }
 
   render() {
+    let image = this.props.book.imageLinks
+                  ? this.props.book.imageLinks.thumbnail
+                  : '';
+
     return (
       <div className="book">
         <div className="book-top">
@@ -20,7 +26,7 @@ class Book extends Component {
             style={{
               width: 128,
               height: 193,
-              backgroundImage: `url(${this.props.book.imageLinks.thumbnail})`
+              backgroundImage: `url(${image})`
             }}></div>
           <div className="book-shelf-changer">
             <select value={this.state.categorySelected} onChange={this.handleCategoryChange}>
