@@ -13,17 +13,17 @@ function ListBooks(props) {
 
           <BookShelf 
             category='Currently Reading'
-            books={props.books.filter(book => book.category === 0)}
+            books={props.books.filter(book => book.shelf === 'currentlyReading')}
           />
 
           <BookShelf 
             category='Want to Read'
-            books={props.books.filter(book => book.category === 1)}
+            books={props.books.filter(book => book.shelf === 'wantToRead')}
           />
           
           <BookShelf 
             category='Read'
-            books={props.books.filter(book => book.category === 2)}
+            books={props.books.filter(book => book.shelf === 'read')}
           />
 
         </div>

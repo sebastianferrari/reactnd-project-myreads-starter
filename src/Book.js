@@ -9,7 +9,7 @@ function Book(props) {
           style={{
             width: 128,
             height: 193,
-            backgroundImage: `url(${props.book.image})`
+            backgroundImage: `url(${props.book.imageLinks.thumbnail})`
           }}></div>
         <div className="book-shelf-changer">
           <select>
