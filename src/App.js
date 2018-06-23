@@ -22,7 +22,7 @@ class BooksApp extends Component {
         this.setState(() => ({
           books
         }));
-        console.log('Books', books);
+        //console.log('Books', books);
       })
   }
 
@@ -68,7 +68,7 @@ class BooksApp extends Component {
               }
             }
 
-            console.log('Our books', ourBooks);
+            //console.log('Our books', ourBooks);
             this.setState(() => ({
               searchingBooks: ourBooks
             }));
