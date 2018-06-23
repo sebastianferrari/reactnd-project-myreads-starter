@@ -22,7 +22,6 @@ class BooksApp extends Component {
         this.setState(() => ({
           books
         }));
-        //console.log('Books', books);
       })
   }
 
@@ -68,11 +67,9 @@ class BooksApp extends Component {
               }
             }
 
-            //console.log('Our books', ourBooks);
             this.setState(() => ({
               searchingBooks: ourBooks
             }));
-            // console.log("Searched Books", books);
           } else {
             this.setState({
               searchingBooks: []
