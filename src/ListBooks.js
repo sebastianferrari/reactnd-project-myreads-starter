@@ -14,16 +14,19 @@ function ListBooks(props) {
           <BookShelf 
             category='Currently Reading'
             books={props.books.filter(book => book.shelf === 'currentlyReading')}
+            onCategoryChange={props.onCategoryChange}
           />
 
           <BookShelf 
             category='Want to Read'
             books={props.books.filter(book => book.shelf === 'wantToRead')}
+            onCategoryChange={props.onCategoryChange}
           />
           
           <BookShelf 
             category='Read'
             books={props.books.filter(book => book.shelf === 'read')}
+            onCategoryChange={props.onCategoryChange}
           />
 
         </div>

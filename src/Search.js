@@ -49,7 +49,7 @@ class Search extends Component {
               <li key={book.industryIdentifiers[0].identifier
                 + '_'
                 + book.contentVersion}>
-                <Book book={book} />
+                <Book book={book} onCategoryChange={this.props.onCategoryChange} />
               </li>
             ))}
           </ol>

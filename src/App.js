@@ -88,12 +88,13 @@ class BooksApp extends Component {
           <Search
             searchBooks={this.searchBooks}
             resultBooksList={this.state.searchingBooks}
+            onCategoryChange={this.changeCategory}
           />
         )} />
         <Route exact path='/' render={() => (
           <ListBooks
             books={this.state.books}
-            updateCategory={this.changeCategory}
+            onCategoryChange={this.changeCategory}
           />
         )} />
       </div>

@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Book extends Component {
-  state = {
-    book: this.props.book,
-    categorySelected: this.props.book.shelf
+  static propTypes = {
+    book: PropTypes.object.isRequired,
+    onCategoryChange: PropTypes.func.isRequired
   }
 
   handleCategoryChange = (e) => {
-    this.setState({
-      categorySelected: e.target.value
-    })
-    //this.props.updateCategory(this.state.book, e.target.value);
+    if (this.props.onCategoryChange) {
+      this.props.onCategoryChange(this.props.book, e.target.value);
+    }
   }
 
   render() {
-    let image = this.props.book.imageLinks
-                  ? this.props.book.imageLinks.thumbnail
-                  : '';
+    const { book } = this.props;
+
+    let image = book.imageLinks
+      ? book.imageLinks.thumbnail
+      : '';
 
     return (
       <div className="book">
@@ -29,7 +31,10 @@ class Book extends Component {
               backgroundImage: `url(${image})`
             }}></div>
           <div className="book-shelf-changer">
-            <select value={this.state.categorySelected} onChange={this.handleCategoryChange}>
+            <select
+              value={book.shelf}
+              onChange={this.handleCategoryChange}
+            >
               <option value="move" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
@@ -38,9 +43,9 @@ class Book extends Component {
             </select>
           </div>
         </div>
-        <div className="book-title">{this.props.book.title}</div>
-        {this.props.book.authors 
-          ? this.props.book.authors.map(author => (
+        <div className="book-title">{book.title}</div>
+        {book.authors
+          ? book.authors.map(author => (
             <div key={author} className="book-authors">{author}</div>
           ))
           : null
