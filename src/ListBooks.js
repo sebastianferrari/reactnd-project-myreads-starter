@@ -4,11 +4,11 @@ import BookShelf from './BookShelf';
 
 function ListBooks(props) {
   return (
-    <div className="list-books">
-      <div className="list-books-title">
+    <div className='list-books'>
+      <div className='list-books-title'>
         <h1>MyReads</h1>
       </div>
-      <div className="list-books-content">
+      <div className='list-books-content'>
         <div>
 
           <BookShelf 
@@ -31,7 +31,7 @@ function ListBooks(props) {
 
         </div>
       </div>
-      <div className="open-search">
+      <div className='open-search'>
         <Link
           to='/search'
         >Add a book</Link>

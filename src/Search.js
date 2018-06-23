@@ -12,14 +12,14 @@ class Search extends Component {
     // const searchTerms = ['Android', 'Art', 'Artificial Intelligence', 'Astronomy', 'Austen', 'Baseball', 'Basketball', 'Bhagat', 'Biography', 'Brief', 'Business', 'Camus', 'Cervantes', 'Christie', 'Classics', 'Comics', 'Cook', 'Cricket', 'Cycling', 'Desai', 'Design', 'Development', 'Digital Marketing', 'Drama', 'Drawing', 'Dumas', 'Education', 'Everything', 'Fantasy', 'Film', 'Finance', 'First', 'Fitness', 'Football', 'Future', 'Games', 'Gandhi', 'Homer', 'Horror', 'Hugo', 'Ibsen', 'Journey', 'Kafka', 'King', 'Lahiri', 'Larsson', 'Learn', 'Literary Fiction', 'Make', 'Manage', 'Marquez', 'Money', 'Mystery', 'Negotiate', 'Painting', 'Philosophy', 'Photography', 'Poetry', 'Production', 'Programming', 'React', 'Redux', 'River', 'Robotics', 'Rowling', 'Satire', 'Science Fiction', 'Shakespeare', 'Singh', 'Swimming', 'Tale', 'Thrun', 'Time', 'Tolstoy', 'Travel', 'Ultimate', 'Virtual Reality', 'Web Development', 'iOS'];
 
     return (
-      <div className="search-books">
-        <div className="search-books-bar">
+      <div className='search-books'>
+        <div className='search-books-bar'>
           <Link
-            className="close-search"
+            className='close-search'
             to='/'
           >Close</Link>
 
-          <div className="search-books-input-wrapper">
+          <div className='search-books-input-wrapper'>
             {/*
               NOTES: The search from BooksAPI is limited to a particular set of search terms.
               You can find these search terms here:
@@ -29,15 +29,15 @@ class Search extends Component {
               you don't find a specific author or title. Every search is limited by search terms.
             */}
             <input
-              type="text"
-              placeholder="Search by title or author"
+              type='text'
+              placeholder='Search by title or author'
               value={this.props.searchTerm}
               onChange={this.handleInputChange} />
 
           </div>
         </div>
-        <div className="search-books-results">
-          <ol className="books-grid">
+        <div className='search-books-results'>
+          <ol className='books-grid'>
             {this.props.resultBooksList.map(book => (
               <li key={book.id}>
                 <Book book={book} onCategoryChange={this.props.onCategoryChange} />

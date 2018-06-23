@@ -79,7 +79,7 @@ class BooksApp extends Component {
 
   render() {
     return (
-      <div className="app">
+      <div className='app'>
         <Route path='/search' render={() => (
           <Search
             searchBooks={this.searchBooks}
