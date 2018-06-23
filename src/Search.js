@@ -3,15 +3,8 @@ import { Link } from 'react-router-dom';
 import Book from './Book';
 
 class Search extends Component {
-  state = {
-    searchTerm: ''
-  }
-
   handleInputChange = (e) => {
     let value = e.target.value;
-    this.setState({
-      searchTerm: value
-    })
     this.props.searchBooks(value);
   }
 
@@ -38,7 +31,7 @@ class Search extends Component {
             <input
               type="text"
               placeholder="Search by title or author"
-              value={this.state.searchTerm}
+              value={this.props.searchTerm}
               onChange={this.handleInputChange} />
 
           </div>

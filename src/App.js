@@ -8,7 +8,8 @@ import ListBooks from './ListBooks';
 class BooksApp extends Component {
   state = {
     books: [],
-    searchingBooks: []
+    searchingBooks: [],
+    searchTerm: ''
   }
 
   componentDidMount() {
@@ -26,24 +27,24 @@ class BooksApp extends Component {
   }
 
   changeCategory = (book, shelf) => {
-    //console.log('Book', book);
-    //console.log('Shelf', shelf);
     BooksAPI.update(book, shelf)
       .then((res) => {
-        //console.log('res', res)
         this.getOurBooks();
+        this.searchBooks(this.state.searchTerm);
       })
   }
 
   searchBooks = searchTerm => {
-    //console.log('Search Term', searchTerm);
+    this.setState({
+      searchTerm
+    })
+
     if (searchTerm.length === 0) {
       this.setState({
         searchingBooks: []
       })
     } else if (searchTerm.length < 3) {
       // Do nothing because the shorter word in search terms available has 3 characters.
-      //console.log('searchTerm.length', searchTerm.length);
     } else {
       BooksAPI.search(searchTerm)
         .then((books) => {
@@ -67,7 +68,7 @@ class BooksApp extends Component {
               }
             }
 
-            // console.log('Our books', ourBooks);
+            console.log('Our books', ourBooks);
             this.setState(() => ({
               searchingBooks: ourBooks
             }));
@@ -89,6 +90,7 @@ class BooksApp extends Component {
             searchBooks={this.searchBooks}
             resultBooksList={this.state.searchingBooks}
             onCategoryChange={this.changeCategory}
+            searchTerm={this.state.searchTerm}
           />
         )} />
         <Route exact path='/' render={() => (
