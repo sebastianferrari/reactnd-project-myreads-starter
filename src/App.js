@@ -42,10 +42,30 @@ class BooksApp extends Component {
       BooksAPI.search(searchTerm)
         .then((books) => {
           if (!books.error) {
+
+            // Before set state we need to map adding a shelf property.
+            let ourBooks = books.map(book => (
+              Object.assign({ shelf: 'none' }, {...book})
+            ))
+
+            // And here we need to map our states with the search result categories.
+            for (let i in ourBooks) {
+              var inOurShelf = this.state.books.filter(element => (
+                element.industryIdentifiers[0].identifier === ourBooks[i].industryIdentifiers[0].identifier
+                &&
+                element.contentVersion === ourBooks[i].contentVersion
+              ));
+              
+              if (inOurShelf.length > 0) {
+                ourBooks[i].shelf = inOurShelf[0].shelf
+              }
+            }
+            
+            // console.log('Our books', ourBooks);
             this.setState(() => ({
-              searchingBooks: books
+              searchingBooks: ourBooks
             }));
-            console.log("Searched Books", books);
+            // console.log("Searched Books", books);
           } else {
             this.setState({
               searchingBooks: []
